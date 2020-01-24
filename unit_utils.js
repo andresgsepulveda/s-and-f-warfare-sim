@@ -1,11 +1,32 @@
 /* jshint esversion: 6 */
+const attitudes =
+{
+  ALLIED : 'allied',
+  FRIENDLY : 'friendly',
+  NEUTRAL : 'neutral'
+};
+
+const sizes =
+{
+  SMALL : 4,
+  MEDIUM : 6,
+  LARGE : 8,
+  HUGE : 10,
+  COLOSSAL : 12
+};
+
+const unit_types =
+{
+  LEVIES : 'levies',
+  INFANTRY : 'infantry',
+  ARCHERS : 'archers',
+  CAVALRY : 'cavalry',
+  FLYING : 'flying',
+  SIEGE_ENGINE : 'siege_engine'
+};
 
 class Unit_Trait
 {
-   var trait_name;
-   var trait_description;
-   var trait_cost;
-   var next_trait;
 
    constructor()
    {
@@ -80,9 +101,6 @@ class Unit_Trait
 
 class Unit_Order
 {
-  var order_name;
-  var order_description;
-  var next_order;
 
   constructor()
   {
@@ -141,15 +159,6 @@ class Unit_Order
 
 class Unit_Attitude
 {
-  const attitudes =
-  {
-    ALLIED = 'allied',
-    FRIENDLY = 'friendly',
-    NEUTRAL = 'neutral'
-  };
-
-  var attitude_status;
-  var attitude_cost_mod;
 
   constructor()
   {
@@ -189,17 +198,6 @@ class Unit_Attitude
 
 class Unit_Size
 {
-   const sizes =
-   {
-     SMALL = 4,
-     MEDIUM = 6,
-     LARGE = 8,
-     HUGE = 10,
-     COLOSSAL = 12
-   };
-
-   var size_status;
-   var size_cost_mod;
 
    constructor()
    {
@@ -245,23 +243,6 @@ class Unit_Size
 
 class Unit_Type
 {
-  const unit_types =
-  {
-    LEVIES = 'levies',
-    INFANTRY = 'infantry',
-    ARCHERS = 'archers',
-    CAVALRY = 'cavalry',
-    FLYING = 'flying',
-    SIEGE_ENGINE = 'siege_engine'
-  };
-
-  var type_status;
-  var type_atk_bonus;
-  var type_pow_bonus;
-  var type_def_bonus;
-  var type_toughness_bonus;
-  var type_morale_bonus;
-  var type_cost_mod;
 
   constructor()
   {
