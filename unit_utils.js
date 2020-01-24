@@ -25,6 +25,26 @@ const unit_types =
   SIEGE_ENGINE : 'siege_engine'
 };
 
+const exp_types =
+{
+  NONE : 'none',
+  GREEN : 'green',
+  REGULAR : 'regular',
+  SEASONED : 'seasoned',
+  VETERAN : 'veteran',
+  ELITE : 'elite',
+  SUPER_ELITE : 'super_elite'
+};
+
+const unit_equips =
+{
+  NONE : 'none',
+  LIGHT : 'light',
+  MEDIUM : 'medium',
+  HEAVY : 'heavy',
+  SUPER_HEAVY : 'super_heavy'
+};
+
 class Unit_Trait
 {
 
@@ -326,24 +346,6 @@ class Unit_Type
 
 class Unit_Experience
 {
-  const exp_types =
-  {
-    NONE = 'none',
-    GREEN = 'green',
-    REGULAR = 'regular',
-    SEASONED = 'seasoned',
-    VETERAN = 'veteran',
-    ELITE = 'elite',
-    SUPER_ELITE = 'super_elite'
-  };
-
-  var exp_status;
-  var exp_atk_bonus;
-  var exp_pow_bonus;
-  var exp_def_bonus;
-  var exp_toughness_bonus;
-  var exp_morale_bonus;
-
   constructor()
   {
     this.exp_status = GREEN;
@@ -412,21 +414,6 @@ class Unit_Experience
 
 class Unit_Equipment
 {
-  const unit_equips =
-  {
-    NONE = 'none',
-    LIGHT = 'light',
-    MEDIUM = 'medium',
-    HEAVY = 'heavy',
-    SUPER_HEAVY = 'super_heavy'
-  };
-
-  var equip_status;
-  var equip_atk_bonus;
-  var equip_pow_bonus;
-  var equip_def_bonus;
-  var equip_toughness_bonus;
-  var equip_morale_bonus;
 
   constructor()
   {
@@ -481,14 +468,6 @@ class Unit_Equipment
 
 class Unit_Ancestry
 {
-
-  var ancestry_name;
-  var ancestry_atk_bonus;
-  var ancestry_pow_bonus;
-  var ancestry_def_bonus;
-  var ancestry_toughness_bonus;
-  var ancestry_morale_bonus;
-  var ancestry_head_trait;
 
   constructor()
   {
@@ -609,41 +588,33 @@ class Unit_Ancestry
 
 class SF_Unit
 {
-  // Strings
-  var name;
-  var commander;
-
-  // Class variables
-  var ancestry;
-  var attitude;
-  var experience;
-  var equipment;
-  var unit_type;
-  var unit_size;
-  var traits;
-  var orders;
-
-  // Integers
-  var atk_mod;
-  var pow_mod;
-  var def_mod;
-  var tough_mod;
-  var morale_mod;
-  var casualties;
-  var unit_cost;
-  var cost_mod;
-
-  // Float
-  var upkeep;
-
-  //Booleans
-  var is_diminished;
-  var are_mercenaries;
 
   constructor(name, commander)
   {
     this.name = name;
     this.commander = commander;
+
+    this.ancestry = null;
+    this.attitude = null;
+    this.experience = null;
+    this.equipment = null;
+    this.unit_type = null;
+    this.unit_size = null;
+    this.traits = null;
+    this.orders = null;
+
+    this.atk_mod = 0;
+    this.pow_mod = 0;
+    this.def_mod = 0;
+    this.tough_mod = 0;
+    this.morale_mod = 0;
+    this.casualties = 0;
+    this.unit_cost = 0;
+    this.cost_mod = 0;
+    this.upkeep = 0;
+
+    this.is_diminished = 0;
+    this.are_mercenaries = 0;
   }
 
   get_name()
