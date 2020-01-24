@@ -348,7 +348,7 @@ class Unit_Experience
 {
   constructor()
   {
-    this.exp_status = GREEN;
+    this.exp_status = exp_types.GREEN;
     this.exp_atk_bonus = 0;
     this.exp_pow_bonus = 0;
     this.exp_def_bonus = 0;
@@ -975,7 +975,7 @@ class SF_Unit
 
   check_diminished()
   {
-    let ratio = casualties / ((float) unit_size.get_size_status());
+    let ratio = casualties / unit_size.get_size_status();
     if (ratio >= 0.50)
     {
       is_diminished = true;
@@ -1005,209 +1005,189 @@ class SF_Unit
 
 }
 
-load_default_traits()
-{
-  AMPHIBIOUS = new Unit_Trait();
-  AMPHIBIOUS.trait_name = "Amphibious";
-  AMPHIBIOUS.trait_description = "This unit does not suffer terrain penalties for fighting in water or on land.";
-  AMPHIBIOUS.trait_cost = 50;
+module.exports = {
+  load_default_traits: function ()
+  {
+    AMPHIBIOUS = new Unit_Trait();
+    AMPHIBIOUS.trait_name = "Amphibious";
+    AMPHIBIOUS.trait_description = "This unit does not suffer terrain penalties for fighting in water or on land.";
+    AMPHIBIOUS.trait_cost = 50;
 
-  BRED_FOR_WAR = new Unit_Trait();
-  BRED_FOR_WAR.trait_name = "Bred For War";
-  BRED_FOR_WAR.trait_description = "This unit cannot be diminished, and cannot have disadvantage on Morale checks.";
-  BRED_FOR_WAR.trait_cost = 100;
+    BRED_FOR_WAR = new Unit_Trait();
+    BRED_FOR_WAR.trait_name = "Bred For War";
+    BRED_FOR_WAR.trait_description = "This unit cannot be diminished, and cannot have disadvantage on Morale checks.";
+    BRED_FOR_WAR.trait_cost = 100;
 
-  BRUTAL = new Unit_Trait();
-  BRUTAL.trait_name = 'Brutal';
-  BRUTAL.trait_description = "This unit inflicts 2 casualties on a successful Power check.";
-  BRUTAL.trait_cost = 200;
+    BRUTAL = new Unit_Trait();
+    BRUTAL.trait_name = 'Brutal';
+    BRUTAL.trait_description = "This unit inflicts 2 casualties on a successful Power check.";
+    BRUTAL.trait_cost = 200;
 
-  COURAGEOUS = new Unit_Trait();
-  COURAGEOUS.trait_name = 'Courageous';
-  COURAGEOUS.trait_description = "Once per battle, this unit can choose to succeed on a Morale check it just failed.";
-  COURAGEOUS.trait_cost = 50;
+    COURAGEOUS = new Unit_Trait();
+    COURAGEOUS.trait_name = 'Courageous';
+    COURAGEOUS.trait_description = "Once per battle, this unit can choose to succeed on a Morale check it just failed.";
+    COURAGEOUS.trait_cost = 50;
 
-  ETERNAL = new Unit_Trait();
-  ETERNAL.trait_name = "Eternal";
-  ETERNAL.trait_description = "This unit cannot be horrified, and it always succeeds on Morale checks to attack
-undead and fiends.";
-  ETERNAL.trait_cost = 50;
+    ETERNAL = new Unit_Trait();
+    ETERNAL.trait_name = "Eternal";
+    ETERNAL.trait_description = "This unit cannot be horrified, and it always succeeds on Morale checks to attack undead and fiends.";
+    ETERNAL.trait_cost = 50;
 
-  FRENZY = new Unit_Trait();
-  FRENZY.trait_name = "Frenzy";
-  FRENZY.trait_description = "If this unit diminishes an enemy unit, it immediately makes a free attack against that unit.";
-  FRENZY.trait_cost = 50;
+    FRENZY = new Unit_Trait();
+    FRENZY.trait_name = "Frenzy";
+    FRENZY.trait_description = "If this unit diminishes an enemy unit, it immediately makes a free attack against that unit.";
+    FRENZY.trait_cost = 50;
 
-  HORRIFY = new Unit_Trait();
-  HORRIFY.trait_name = "Horrify";
-  HORRIFY.trait_description = "If this unit inflicts a casualty on an enemy unit, that unit must make a DC 15 Morale
-check. Failure exhausts the unit.";
-  HORRIFY.trait_cost = 200;
+    HORRIFY = new Unit_Trait();
+    HORRIFY.trait_name = "Horrify";
+    HORRIFY.trait_description = "If this unit inflicts a casualty on an enemy unit, that unit must make a DC 15 Morale check. Failure exhausts the unit.";
+    HORRIFY.trait_cost = 200;
 
-  MARTIAL = new Unit_Trait();
-  MARTIAL.trait_name = 'Martial';
-  MARTIAL.trait_description = "If this unit succeeds on a Power check and its size is greater than the defending unit,
-it inflicts 2 casualties.";
-  MARTIAL.trait_cost = 100;
+    MARTIAL = new Unit_Trait();
+    MARTIAL.trait_name = 'Martial';
+    MARTIAL.trait_description = "If this unit succeeds on a Power check and its size is greater than the defending unit, it inflicts 2 casualties.";
+    MARTIAL.trait_cost = 100;
 
-  MINDLESS = new Unit_Trait();
-  MINDLESS.trait_name = 'Mindless';
-  MINDLESS.trait_description = "This unit cannot fail Morale Checks";
-  MINDLESS.trait_cost = 100;
+    MINDLESS = new Unit_Trait();
+    MINDLESS.trait_name = 'Mindless';
+    MINDLESS.trait_description = "This unit cannot fail Morale Checks";
+    MINDLESS.trait_cost = 100;
 
-  REGENERATE = new Unit_Trait();
-  REGENERATE.trait_name = 'Regenerate';
-  REGENERATE.trait_description = "When this unit refreshes, increment its casualty die. This trait ceases to function if
-the unit suffers a casualty from battle magic."
-  REGENERATE.trait_cost = 200;
+    REGENERATE = new Unit_Trait();
+    REGENERATE.trait_name = 'Regenerate';
+    REGENERATE.trait_description = "When this unit refreshes, increment its casualty die. This trait ceases to function if the unit suffers a casualty from battle magic."
+    REGENERATE.trait_cost = 200;
 
-  RAVENOUS = new Unit_Trait();
-  RAVENOUS.trait_name = 'Ravenous';
-  RAVENOUS.trait_description = "While any enemy unit is diminished, this unit can spend a round feeding on the corpses
-to increment their casualty die.";
-  RAVENOUS.trait_cost = 50;
+    RAVENOUS = new Unit_Trait();
+    RAVENOUS.trait_name = 'Ravenous';
+    RAVENOUS.trait_description = "While any enemy unit is diminished, this unit can spend a round feeding on the corpses to increment their casualty die.";
+    RAVENOUS.trait_cost = 50;
 
-  HURL_ROCKS = new Unit_Trait();
-  HURL_ROCKS.trait_name = "Hurl Rocks";
-  HURL_ROCKS.trait_description = "If this unit succeeds on an Attack check, it inflicts 2 casualties. against fortifications,
-it inflicts 1d6 casualties.";
-  HURL_ROCKS.trait_cost = 250;
+    HURL_ROCKS = new Unit_Trait();
+    HURL_ROCKS.trait_name = "Hurl Rocks";
+    HURL_ROCKS.trait_description = "If this unit succeeds on an Attack check, it inflicts 2 casualties. against fortifications, it inflicts 1d6 casualties.";
+    HURL_ROCKS.trait_cost = 250;
 
-  SAVAGE = new Unit_Trait();
-  SAVAGE.trait_name = "Savage";
-  SAVAGE.trait_description = "This unit has advantage on the first Attack check it makes each battle.";
-  SAVAGE.trait_cost = 50;
+    SAVAGE = new Unit_Trait();
+    SAVAGE.trait_name = "Savage";
+    SAVAGE.trait_description = "This unit has advantage on the first Attack check it makes each battle.";
+    SAVAGE.trait_cost = 50;
 
-  STALWART = new Unit_Trait();
-  STALWART.trait_name = "Stalwart";
-  STALWART.trait_description = "Enemy battle magic has disadvantage on Power checks against this unit.";
-  STALWART.trait_cost = 50;
+    STALWART = new Unit_Trait();
+    STALWART.trait_name = "Stalwart";
+    STALWART.trait_description = "Enemy battle magic has disadvantage on Power checks against this unit.";
+    STALWART.trait_cost = 50;
 
-  TRAIT_TWISTING_ROOTS = new Unit_Trait();
-  TRAIT_TWISTING_ROOTS.trait_name = "Twisting Roots";
-  TRAIT_TWISTING_ROOTS.trait_description = "As an action, this unit can sap the walls of a fortification. Siege units have advantage
-on Power checks against sapped fortifications.";
-  TRAIT_TWISTING_ROOTS.trait_cost = 200;
+    TRAIT_TWISTING_ROOTS = new Unit_Trait();
+    TRAIT_TWISTING_ROOTS.trait_name = "Twisting Roots";
+    TRAIT_TWISTING_ROOTS.trait_description = "As an action, this unit can sap the walls of a fortification. Siege units have advantage on Power checks against sapped fortifications.";
+    TRAIT_TWISTING_ROOTS.trait_cost = 200;
 
-  UNDEAD = new Unit_Trait();
-  UNDEAD.trait_name = "Undead";
-  UNDEAD.trait_description = "Green and regular troops must pass a Morale check to attack this unit. Each enemy
-unit need only do this once."
-  UNDEAD.trait_cost = 50;
-}
+    UNDEAD = new Unit_Trait();
+    UNDEAD.trait_name = "Undead";
+    UNDEAD.trait_description = "Green and regular troops must pass a Morale check to attack this unit. Each enemy unit need only do this once."
+    UNDEAD.trait_cost = 50;
+  },
+  load_default_sizes: function ()
+  {
+    UNIT_SMALL = new Unit_Size();
+    UNIT_SMALL.set_size_status(sizes.SMALL);
 
-load_default_ancestries()
-{
+    UNIT_MEDIUM = new Unit_Size();
+    UNIT_MEDIUM.set_size_status(sizes.MEDIUM);
 
-}
+    UNIT_LARGE = new Unit_Size();
+    UNIT_LARGE.set_size_status(sizes.LARGE);
 
-load_default_orders()
-{
-  ATTACK_UNIT = new Unit_Order();
-  ATTACK_UNIT.order_name = "Attack Unit";
-  ATTACK_UNIT.order_description = "Attacks a valid unit in range.";
+    UNIT_HUGE = new Unit_Size();
+    UNIT_HUGE.set_size_status(sizes.HUGE);
 
-  CHARGE_UNIT = new Unit_Order();
-  CHARGE_UNIT.order_name = "Charge at Unit";
-  CHARGE_UNIT.order_description = "A Charge is an attack with
-advantage on the Attack check. On a successful Power
-check, a Charge inflicts 2 casualties, and the charging
-unit becomes engaged with the defending unit.";
+    UNIT_COLOSSAL = new Unit_Size();
+    UNIT_COLOSSAL.set_size_status(sizes.COLOSSAL);
+  },
+  load_default_orders: function ()
+  {
+    ATTACK_UNIT = new Unit_Order();
+    ATTACK_UNIT.order_name = "Attack Unit";
+    ATTACK_UNIT.order_description = "Attacks a valid unit in range.";
 
-  DISENGAGE_UNIT = new Unit_Order();
-  DISENGAGE_UNIT.order_name = "Disengage Unit";
-  DISENGAGE_UNIT.order_description = "Attacking units that are engaged can choose to disengage, making a DC 13 Morale check to disengage.
-  On a successful check, the unit is successfully disengaged and can attack another unit."
+    CHARGE_UNIT = new Unit_Order();
+    CHARGE_UNIT.order_name = "Charge at Unit";
+    CHARGE_UNIT.order_description = "A Charge is an attack with advantage on the Attack check. On a successful Power check, a Charge inflicts 2 casualties, and the charging unit becomes engaged with the defending unit.";
 
-  ENGAGE_UNIT = new Unit_Order();
-  ENGAGE_UNIT.order_name = "Engage Unit";
-  ENGAGE_UNIT.order_description = "Engages a valid enemy unit in range. When engaged, two units can only attack eachother.
-  The attacking unit can choose to disengage as an order. Defending units cannot disengage. The attacking unit must make a successful
-  DC 13 Morale check to disengage on the next turn. Engaged Units cannot Charge";
+    DISENGAGE_UNIT = new Unit_Order();
+    DISENGAGE_UNIT.order_name = "Disengage Unit";
+    DISENGAGE_UNIT.order_description = "Attacking units that are engaged can choose to disengage, making a DC 13 Morale check to disengage. On a successful check, the unit is successfully disengaged and can attack another unit."
 
-  ORDER_TWISTING_ROOTS = new Unit_Order();
-  ORDER_TWISTING_ROOTS.order_name = "Twisting Roots";
-  ORDER_TWISTING_ROOTS.order_description = "As an action, this unit can sap the walls of a fortification. Siege units have advantage
-on Power checks against sapped fortifications.";
+    ENGAGE_UNIT = new Unit_Order();
+    ENGAGE_UNIT.order_name = "Engage Unit";
+    ENGAGE_UNIT.order_description = "Engages a valid enemy unit in range. When engaged, two units can only attack eachother. The attacking unit can choose to disengage as an order. Defending units cannot disengage. The attacking unit must make a successful DC 13 Morale check to disengage on the next turn. Engaged Units cannot Charge";
 
-  RETREAT = new Unit_Order();
-  RETREAT.order_name = "Retreat";
-  RETREAT.order_description = "Makes a DC 15 Morale check, and removes the unit from play. "
-}
+    ORDER_TWISTING_ROOTS = new Unit_Order();
+    ORDER_TWISTING_ROOTS.order_name = "Twisting Roots";
+    ORDER_TWISTING_ROOTS.order_description = "As an action, this unit can sap the walls of a fortification. Siege units have advantage on Power checks against sapped fortifications.";
 
-load_default_sizes()
-{
-  UNIT_SMALL = new Unit_Size();
-  UNIT_SMALL.set_size_status(sizes.SMALL);
+    RETREAT = new Unit_Order();
+    RETREAT.order_name = "Retreat";
+    RETREAT.order_description = "Makes a DC 15 Morale check, and removes the unit from play. "
+  },
+  load_default_attitudes: function ()
+  {
+    ATTITUDE_ALLIED = new Unit_Attitude();
+    ATTITUDE_ALLIED.set_status(attitudes.ALLIED);
 
-  UNIT_MEDIUM = new Unit_Size();
-  UNIT_MEDIUM.set_size_status(sizes.MEDIUM);
+    ATTITUDE_FRIENDLY = new Unit_Attitude();
+    ATTITUDE_FRIENDLY.set_status(attitudes.FRIENDLY);
 
-  UNIT_LARGE = new Unit_Size();
-  UNIT_LARGE.set_size_status(sizes.LARGE);
+    ATTITUDE_NEUTRAL = new Unit_Attitude();
+    ATTITUDE_NEUTRAL.set_status(attitudes.NEUTRAL);
+  },
+  load_default_experience: function ()
+  {
+    EXP_NONE = new Unit_Experience();
+    EXP_NONE.set_exp_status(exp_types.NONE);
 
-  UNIT_HUGE = new Unit_Size();
-  UNIT_HUGE.set_size_status(sizes.HUGE);
+    EXP_GREEN = new Unit_Experience();
+    EXP_GREEN.set_exp_status(exp_types.GREEN);
 
-  UNIT_COLOSSAL = new Unit_Size();
-  UNIT_COLOSSAL.set_size_status(sizes.COLOSSAL);
-}
+    EXP_REGULAR = new Unit_Experience();
+    EXP_REGULAR.set_exp_status(exp_types.REGULAR);
 
-load_default_attitudes()
-{
-  ATTITUDE_ALLIED = new Unit_Attitude();
-  ATTITUDE_ALLIED.set_status(attitudes.ALLIED);
+    EXP_SEASONED = new Unit_Experience();
+    EXP_SEASONED.set_exp_status(exp_types.SEASONED);
 
-  ATTITUDE_FRIENDLY = new Unit_Attitude();
-  ATTITUDE_FRIENDLY.set_status(attitudes.FRIENDLY);
+    EXP_VETERAN = new Unit_Experience();
+    EXP_VETERAN.set_exp_status(exp_types.VETERAN);
 
-  ATTITUDE_NEUTRAL = new Unit_Attitude();
-  ATTITUDE_NEUTRAL.set_status(attitudes.NEUTRAL);
-}
+    EXP_ELITE = new Unit_Experience();
+    EXP_ELITE.set_exp_status(exp_types.ELITE);
 
-load_default_experience()
-{
-  EXP_NONE = new Unit_Experience();
-  EXP_NONE.set_exp_status(exp_types.NONE);
+    EXP_SUPER_ELITE = new Unit_Experience();
+    EXP_ELITE.set_exp_status(exp_types.SUPER_ELITE);
+  },
+  load_default_equipment: function ()
+  {
+    EQP_NONE = new Unit_Equipment();
+    EQP_NONE.set_equip_status(unit_equips.NONE);
 
-  EXP_GREEN = new Unit_Experience();
-  EXP_GREEN.set_exp_status(exp_types.GREEN);
+    EQP_LIGHT = new Unit_Equipment();
+    EQP_LIGHT.set_equip_status(unit_equips.LIGHT);
 
-  EXP_REGULAR = new Unit_Experience();
-  EXP_REGULAR.set_exp_status(exp_types.REGULAR);
+    EQP_MEDIUM = new Unit_Equipment();
+    EQP_MEDIUM.set_equip_status(unit_equips.MEDIUM);
 
-  EXP_SEASONED = new Unit_Experience();
-  EXP_SEASONED.set_exp_status(exp_types.SEASONED);
+    EQP_HEAVY = new Unit_Equipment();
+    EQP_HEAVY.set_equip_status(unit_equips.HEAVY);
 
-  EXP_VETERAN = new Unit_Experience();
-  EXP_VETERAN.set_exp_status(exp_types.VETERAN);
-
-  EXP_ELITE = new Unit_Experience();
-  EXP_ELITE.set_exp_status(exp_types.ELITE);
-
-  EXP_SUPER_ELITE = new Unit_Experience();
-  EXP_ELITE.set_exp_status(exp_types.SUPER_ELITE);
-}
-
-load_default_equipment()
-{
-  EQP_NONE = new Unit_Equipment();
-  EQP_NONE.set_equip_status(unit_equips.NONE);
-
-  EQP_LIGHT = new Unit_Equipment();
-  EQP_LIGHT.set_equip_status(unit_equips.LIGHT);
-
-  EQP_MEDIUM = new Unit_Equipment();
-  EQP_MEDIUM.set_equip_status(unit_equips.MEDIUM);
-
-  EQP_HEAVY = new Unit_Equipment();
-  EQP_HEAVY.set_equip_status(unit_equips.HEAVY);
-
-  EQP_SUPER_HEAVY = new Unit_Equipment();
-  EQP_SUPER_HEAVY.set_equip_status(unit_equips.SUPER_HEAVY);
-}
-
-load_default_types()
-{
-
-}
+    EQP_SUPER_HEAVY = new Unit_Equipment();
+    EQP_SUPER_HEAVY.set_equip_status(unit_equips.SUPER_HEAVY);
+  },
+  load_default_ancestries: function ()
+  {
+    return false;
+  },
+  load_default_types: function ()
+  {
+    return false;
+  }
+};
