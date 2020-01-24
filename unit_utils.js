@@ -1191,3 +1191,16 @@ module.exports = {
     return false;
   }
 };
+module.exports.attitudes = attitudes;
+module.exports.unit_types = unit_types;
+module.exports.unit_equips = unit_equips;
+module.exports.exp_types = exp_types;
+module.exports.sizes = sizes;
+module.exports.Unit_Trait = Unit_Trait;
+module.exports.Unit_Order = Unit_Order;
+module.exports.Unit_Size = Unit_Size;
+module.exports.Unit_Attitude = Unit_Attitude;
+module.exports.Unit_Type = Unit_Type;
+module.exports.Unit_Experience = Unit_Experience;
+module.exports.Unit_Ancestry = Unit_Ancestry;
+module.exports.SF_Unit = SF_Unit;
