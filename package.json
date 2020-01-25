@@ -1,23 +1,23 @@
 {
   "name": "s-and-f-warfare-sim",
   "version": "1.0.0",
-  "description": "Strongholds and Followers Warfare Simulator",
+  "description": "Strongholds and Followers - Warfare Simulator",
   "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
   "scripts": {
-    "start": "node index.js",
-    "test": "jest --coverage --forceExit"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/andresgsepulveda/s-and-f-warfare-sim.git"
   },
-  "author": "Andres Sepulveda",
+  "author": "",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/andresgsepulveda/s-and-f-warfare-sim/issues"
   },
-  "homepage": "https://github.com/andresgsepulveda/s-and-f-warfare-sim#readme",
-  "dependencies": {
-    "server": "^1.0.22"
-  }
+  "homepage": "https://github.com/andresgsepulveda/s-and-f-warfare-sim#readme"
 }
