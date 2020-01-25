@@ -1,0 +1,19 @@
+{
+  "name": "s-and-f-warfare-sim",
+  "version": "1.0.0",
+  "description": "Strongholds and Followers Warfare Simulator",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andresgsepulveda/s-and-f-warfare-sim.git"
+  },
+  "author": "Andres Sepulveda",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andresgsepulveda/s-and-f-warfare-sim/issues"
+  },
+  "homepage": "https://github.com/andresgsepulveda/s-and-f-warfare-sim#readme"
+}
