@@ -1,10 +1,14 @@
 /* jshint esversion: 6 */
 
-
+const express = require('express');
 const http = require('http');
+const path = require('path');
+
 const unit_utils = require("./unit_utils");
 const sim_utils = require("./sim_utils");
 
+const app = express();
+const port = process.env.PORT || "8000";
 
 unit_utils.load_default_traits();
 unit_utils.load_default_orders();
@@ -14,3 +18,13 @@ unit_utils.load_default_ancestries();
 unit_utils.load_default_equipment()
 unit_utils.load_default_types();
 unit_utils.load_default_experience();
+
+app.get("/", (request, response) =>
+{
+  response.status(200).send("Hello World!");
+});
+
+app.listen(port, () =>
+{
+  console.log("Listening to request on http://localhost:${port}")
+});
