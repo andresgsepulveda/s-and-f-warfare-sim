@@ -1,5 +1,6 @@
 /* jshint esversion: 6 */
 
+const ejsLint = require("ejs-lint");
 const express = require('express');
 const http = require('http');
 const path = require('path');
@@ -19,12 +20,19 @@ unit_utils.load_default_equipment()
 unit_utils.load_default_types();
 unit_utils.load_default_experience();
 
+app.set('view engine', 'ejs');
+
 app.get("/", (request, response) =>
 {
-  response.status(200).send("Hello World!");
+  response.render('pages/index');
+});
+
+app.get('/about', (request, response) =>
+{
+  response.render('pages/about');
 });
 
 app.listen(port, () =>
 {
-  console.log("Listening to request on http://localhost:${port}")
+  console.log("Listening to request on http://localhost:8000")
 });
