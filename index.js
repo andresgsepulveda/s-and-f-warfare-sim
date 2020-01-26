@@ -27,11 +27,6 @@ app.get("/", (request, response) =>
   response.render('pages/index');
 });
 
-app.get('/about', (request, response) =>
-{
-  response.render('pages/about');
-});
-
 app.listen(port, () =>
 {
   console.log("Listening to request on http://localhost:8000")
